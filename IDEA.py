@@ -1,14 +1,26 @@
 import io
 import sys
+from os import system, name
+
+def clear():
+ 
+    if name=='nt':
+        _ = system('cls')
+    else:
+         _ = system('clear')
+
 
 idea_list=[]
 i=1
 
 def add_ideas(i=i):
+
+    clear()
+    
     while True:
         a=input("What is your new idea?")
         if a=="--list":
-            print("Twoje aktualne pomysły:", idea_list)
+            print("Current ideas:", idea_list)
         elif a[0:8]=="--delete":
             if len(a)<9:
                 print("Specify a number after --delete.")
@@ -26,6 +38,6 @@ def add_ideas(i=i):
                 f.write('\n')
                 f.close()
             i+=1
-            print("Twoje aktualne pomysły:", idea_list)
+            print("Current ideas:", idea_list)
 
 add_ideas()
